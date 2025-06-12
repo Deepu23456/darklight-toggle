@@ -1,0 +1,104 @@
+
+
+
+/* Root Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --toggle-bg: #ccc;
+  --toggle-ball: #fff;
+  --toggle-active-bg: #333;
+  --transition: 0.4s ease;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --bg-color: #1e1e2f;
+  --text-color: #f0f0f0;
+  --toggle-bg: #555;
+  --toggle-ball: #222;
+  --toggle-active-bg: #f0f0f0;
+}
+
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition), color var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+  margin-top: 30px;
+  position: relative;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 34px;
+  background-color: var(--toggle-bg);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle .ball {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: 26px;
+  width: 26px;
+  background-color: var(--toggle-ball);
+  border-radius: 50%;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+/* Icons */
+.toggle .moon,
+.toggle .sun {
+  position: absolute;
+  top: 2.3px;
+  font-size: 20px;
+  z-index: 1;
+  transition: opacity var(--transition);
+}
+
+.toggle .moon {
+  left: 2px;
+  opacity: 1;
+}
+
+.toggle .sun {
+  right: 3px;
+  opacity: 0;
+}
+
+/* Checked State Animation */
+#mode-toggle:checked + .toggle .moon {
+  opacity: 0;
+}
+
+#mode-toggle:checked + .toggle .ball {
+  transform: translateX(36px);
+}
+
+#mode-toggle:checked + .toggle .sun {
+  opacity: 1;
+}
